@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LuciaLab</title>
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #00ff88;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+    }
+    button {
+      background: #00ff88;
+      color: #0a0a0a;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+    }
+    button:hover {
+      background: #0affaa;
+    }
+  </style>
+</head>
+<body>
+  <h1>LuciaLab - Donde las risas son código</h1>
+  <button id="btnCRO">🎤 C.R.O en vivo</button>
+  <button id="btnRandom">🐱 Mensaje Random</button>
+  <button id="btnLlama">📞 Llamada Secreta</button>
+  <button id="btnCode">💬 Código C.R.O</button>
+
+  <script>
+    const songs = [
+      'https://www.youtube.com/embed/xyz1', // Ruinas - C.R.O
+      'https://www.youtube.com/embed/xyz2', // Ella Es una G - C.R.O
+      'https://www.youtube.com/embed/xyz3', // Reina - C.R.O
+      'https://www.youtube.com/embed/xyz4', // Mundo - C.R.O
+      'https://www.youtube.com/embed/abc1', // mi habitación - RickyEdit
+      'https://www.youtube.com/embed/abc2', // por ti - RickyEdit
+      'https://www.youtube.com/embed/def1', // LUCES DE COLORES - Omar Courtz
+      'https://www.youtube.com/embed/def2', // QUE VAS HACER HOY ? - Omar Courtz
+    ];
+
+    let currentSong = 0;
+
+    document.getElementById('btnCRO').onclick = () => {
+      playRandomSong();
+      document.getElementById('btnCRO').innerText = 'Siguiente track 🔄';
+    };
+
+    function playRandomSong() {
+      const randomIndex = Math.floor(Math.random() * songs.length);
+      const iframe = document.createElement('iframe');
+      iframe.src = songs[randomIndex];
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+      setTimeout(() => iframe.remove(), 30000); // quita iframe tras 30s
+    }
+
+    // otros botones
+    document.getElementById('btnRandom').onclick = () => alert('Vaya, ¿qué haces a las 3am?');
+    document.getElementById('btnLlama').onclick = () => alert('¿Dígame? Soy LuciaMode 🐰');
+    document.getElementById('btnCode').onclick = () => {
+      const code = prompt('Código secreto?');
+      if (code === 'vaya') alert('¡Acertaste! Eres la reina del descontrol');
+    };
+  </script>
+</body>
+</html>
